@@ -27,6 +27,18 @@ document.addEventListener("DOMContentLoaded", function () {
         var ageMonth = currentMonth - month;
         var ageDay = currentDay - day;
 
+        // checking for negative number
+
+        if (ageDay < 0) {
+            ageMonth--;
+            ageDay += new Date(currentYear, currentMonth, 0).getDate(); // Days in previous month
+        }
+
+        if (ageMonth < 0) {
+            ageYear--;
+            ageMonth += 12;
+        }
+
         return { years: ageYear, months: ageMonth, days: ageDay };
     }
 
